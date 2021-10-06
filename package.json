@@ -8,6 +8,7 @@
     "test": "jest",
     "format": "prettier --write ./src",
     "lint": "eslint --fix ./src/*",
+    "lint-in-ci": "eslint --cache --quiet ./src/*",
     "fix": "npm run format && npm run lint"
   },
   "keywords": [],
