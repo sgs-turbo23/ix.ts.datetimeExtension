@@ -1,0 +1,2 @@
+# datetimeExtensionTypeScript
+Google App Scriptで共通的に使用するdatetime関連拡張ライブラリ
