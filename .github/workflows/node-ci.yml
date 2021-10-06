@@ -15,6 +15,6 @@ jobs:
           node-version: '16.x'
       - run: npm ci
       - run: npm run build --if-present --noEmit
-      - run: npm format --list-different
-      - run: npm lint --cache --quiet
+      - run: npm run format --list-different
+      - run: npm run lint --cache --quiet
       - run: npm test
