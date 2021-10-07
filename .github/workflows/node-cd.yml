@@ -1,0 +1,32 @@
+name: Node.js Package
+on:
+  push:
+    # タグをpushしたら実行されるように
+    tags:
+      - 'v*.*.*'
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      # Update package.json Version
+      - run: VER=`echo "refs/tags/v1.0.0" | sed -e "s#refs/tags/v##g"`
+      - run: cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
+      - run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+	        git config --local user.name "github-actions[bot]"
+          git add package.json
+          git commit -m "Update Version" -a
+          git pull
+          git push origin master
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@sgs-turbo23'
+      - run: npm install
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
