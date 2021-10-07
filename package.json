@@ -1,6 +1,6 @@
 {
-  "name": "datetimeextensiontypescript",
-  "version": "1.0.0",
+  "name": "@sgs-turbo23/datetime_extension_typescript",
+  "version": "1.0.1",
   "description": "",
   "main": "datetimeUtil.js",
   "scripts": {
@@ -28,5 +28,12 @@
   },
   "dependencies": {
     "package.json": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sgs-turbo23/datetimeExtensionTypeScript.git"
+  },
+  "publishConfig": {
+    "name":"@sgs-turbo23/datetime_extension_typescript"
   }
 }
