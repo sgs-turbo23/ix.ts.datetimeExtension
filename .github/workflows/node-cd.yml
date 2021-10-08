@@ -9,16 +9,17 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
+      - with:
+          ref: ${{ github.event.pull_request.head.ref }}
       # Update package.json Version
       - run: VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
       - run: cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
       - run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add package.json
-          git commit -m "Update Version" -a
-          git pull
-          git push origin main
+          git add .
+          git commit -m "Update Version"
+          git push
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
