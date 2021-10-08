@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
-      - with:
+        with:
           ref: ${{ github.event.pull_request.head.ref }}
       # Update package.json Version
       - run: VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
