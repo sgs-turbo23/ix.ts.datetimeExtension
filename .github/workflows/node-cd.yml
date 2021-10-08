@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # Update package.json Version
-      - run: VER=`echo "refs/tags/v1.0.0" | sed -e "s#refs/tags/v##g"`
+      - run: VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
       - run: cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
       - run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
