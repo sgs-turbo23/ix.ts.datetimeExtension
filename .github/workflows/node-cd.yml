@@ -19,7 +19,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Update Version"
-          git push
+          git push origin HEAD:main
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
