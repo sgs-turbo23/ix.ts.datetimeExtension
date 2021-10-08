@@ -18,7 +18,7 @@ jobs:
           git add package.json
           git commit -m "Update Version" -a
           git pull
-          git push origin master
+          git push origin main
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
