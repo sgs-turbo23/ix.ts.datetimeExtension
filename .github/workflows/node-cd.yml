@@ -12,8 +12,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       # Update package.json Version
-      - run: VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
-      - run: cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
+      - run: |
+          VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
+          cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
       - run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -28,6 +29,7 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@sgs-turbo23'
       - run: npm install
+      - run: npm run build --if-present
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
