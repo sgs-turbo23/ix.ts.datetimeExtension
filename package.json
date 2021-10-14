@@ -1,6 +1,6 @@
 {
   "name": "@sgs-turbo23/ix.js.datetime_extension",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "JavaScript用Datetimeの操作用クラス",
   "main": "datetimeUtil.js",
   "scripts": {
