@@ -1,41 +1,32 @@
 class datetimeUtil {
-  static getYesterday(date: any): any {
+  // 前日を取得します
+  static getYesterday(date: Date): Date {
     date.setDate(date.getDate() - 1);
     return date;
   }
 
-  static addDay(date: any, diff: any): any {
+  // 指定した日付にdiffを加えた日付を取得します
+  static addDay(date: Date, diff: number): Date {
     date.setDate(date.getDate() + diff);
     return date;
   }
 
-  static makeDateString(date: any): any {
-    this.validTypeDate(date);
-
+  // 日付をyyyy/M/d形式で返します
+  static makeDateString(date: Date): string {
     // yyyy/M/d
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   }
 
-  static makeShortDateString(date: any): any {
-    this.validTypeDate(date);
-
+  // 日付をyyyyMMdd形式で返します
+  static makeShortDateString(date: Date): string {
     // yyyyMMdd
     return `${date.getFullYear()}${datetimeUtil.PadLeftZero(
-      date.getMonth() + 1
-    )}${datetimeUtil.PadLeftZero(date.getDate())}`;
+      (date.getMonth() + 1).toString()
+    )}${datetimeUtil.PadLeftZero(date.getDate().toString())}`;
   }
 
-  static validTypeDate(date: any): any {
-    // Date型の判定
-    var toString = Object.prototype.toString;
-    const typeName = "[object Date]";
-    if (toString.call(new Date()) !== typeName) {
-      throw new TypeError(`${date} is not a date`);
-    }
-    return;
-  }
-
-  static PadLeftZero(arg: any): any {
+  // 渡された文字をゼロを左づけし2桁で返します
+  static PadLeftZero(arg: string): string {
     if (arg.length > 2) {
       throw new RangeError(`arg over 2 length arg:${arg}`);
     }
