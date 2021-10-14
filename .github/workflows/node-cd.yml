@@ -15,8 +15,7 @@ jobs:
       - run: |
           VER=`echo ${{ github.ref }} | sed -e "s#refs/tags/v##g"`
           cat package.json | jq '.version|='\"$VER\" > tmp && mv tmp package.json
-          cat package.json
-      - run: |
+          echo tmp
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
