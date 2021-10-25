@@ -34,4 +34,4 @@ class datetimeUtil {
   }
 }
 
-export = datetimeUtil;
+/*@build-ignore*/export = datetimeUtil;
