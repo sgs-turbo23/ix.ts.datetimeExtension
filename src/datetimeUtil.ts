@@ -1,4 +1,10 @@
 class datetimeUtil {
+  // 当日を取得します
+  static getToday(): Date {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  }
+  
   // 前日を取得します
   static getYesterday(date: Date): Date {
     date.setDate(date.getDate() - 1);
